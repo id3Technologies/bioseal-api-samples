@@ -28,7 +28,7 @@ To run the test program, you will have to replace the variables in <> by your ow
 
 - Use case information
     - Put your use case identifier in the variable _useCaseId_
-    - Put your use case version number in the variable _useCaseversion_
+    - Put your use case version number in the variable _useCaseVersion_
     - Edit the _BioSealSamplePayload_ class properties according to the biographics fields defined in your BioSeal Project Definition document.
 
 ### Step 3: Test
