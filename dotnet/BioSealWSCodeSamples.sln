@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioSealWSCodeSamples", "BioSealWSCodeSamples\BioSealWSCodeSamples.csproj", "{18511237-7449-4B02-A6A5-3DB859861612}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18511237-7449-4B02-A6A5-3DB859861612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18511237-7449-4B02-A6A5-3DB859861612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18511237-7449-4B02-A6A5-3DB859861612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18511237-7449-4B02-A6A5-3DB859861612}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDC50234-738B-4FA0-B2E8-4E65F28A0A6E}
+	EndGlobalSection
+EndGlobal
