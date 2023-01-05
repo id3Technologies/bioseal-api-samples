@@ -24,12 +24,12 @@ Then, once your request will be accepted, you will receive your own token for th
 To run the test program, you will have to replace the variables in <> by your own information:
 
 - Webservice authorization
-    - In Program.cs, put your authorization token in the variable _authKey__.
+    - Put your authorization token in the variable _authKey__.
 
 - Use case information
-    - In Program.cs, put your use case identifier in the variable _useCaseId_
-    - In Program.cs, put your use case version number in the variable _useCaseversion_
-    - In BioSealSampleData.cs, edit the _BioSealSamplePayload_ class properties according to the biographics fields defined in your BioSeal Project Definition document.
+    - Put your use case identifier in the variable _useCaseId_
+    - Put your use case version number in the variable _useCaseversion_
+    - Edit the _BioSealSamplePayload_ class properties according to the biographics fields defined in your BioSeal Project Definition document.
 
 ### Step 3: Test
 
