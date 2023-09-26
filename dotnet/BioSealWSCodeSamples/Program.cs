@@ -13,8 +13,8 @@ namespace BioSealWSCodeSamples
     {
         // WS parameters
         private static readonly string authUrl_ = "https://bioseal.id3.eu";
-        private static readonly string authUri_ = $"{authUrl_}/authenticate";
         private static readonly string authKey_ = "<PUT_YOUR_AUTHENTICATION_TOKEN_HERE>";
+        private static readonly string authUri_ = $"{authUrl_}/authenticate";
 
         static void Main(string[] args)
         {
@@ -58,7 +58,7 @@ namespace BioSealWSCodeSamples
 
             List<string> formats = new List<string>();
             formats.Add("QrCode");
-            formats.Add("Datamatrix");
+            formats.Add("DataMatrix");
             formats.Add(""); // default
             int nbFormats = formats.Count;
 
@@ -189,6 +189,9 @@ namespace BioSealWSCodeSamples
             int width2DCode = 472, int height2DCode = 472)
         {
             string uri = authUrl_ + "/api/bioseal/create";
+            bool hasFace = (storeTemplate || storePicture);
+            if (hasFace)
+                uri += "/biometric";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
 
@@ -256,14 +259,14 @@ namespace BioSealWSCodeSamples
             string datetime = DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss");
 
             string faceBase64String = null;
-            if (faceImage != null)
+            if (hasFace && faceImage != null)
             {
                 Bitmap faceBitmap = (Bitmap)faceImage;
                 faceBase64String = Base64Tools.Base64EncodeImage(faceBitmap, ImageFormat.Jpeg);
             }
 
             // serialize biographics + face data
-            string requestBody = payload.Serialize(faceBase64String);
+            string requestBody = payload.Serialize(faceBase64String, storeTemplate, storePicture);
             byte[] bytes = encoding.GetBytes(requestBody);
             request.ContentLength = bytes.Length;
 

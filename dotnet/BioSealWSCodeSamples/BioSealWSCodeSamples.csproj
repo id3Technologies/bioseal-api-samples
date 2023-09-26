@@ -48,6 +48,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Base64Tools.cs" />
+    <Compile Include="Tools\BioSealImages.cs" />
     <Compile Include="Tools\BioSealSampleData.cs" />
     <Compile Include="Tools\BioSealMetadata.cs" />
     <Compile Include="Tools\ByteTools.cs" />

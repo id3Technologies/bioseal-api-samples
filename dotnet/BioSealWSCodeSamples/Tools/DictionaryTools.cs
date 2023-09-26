@@ -37,11 +37,13 @@ namespace BioSealWSCodeSamples
             if (dict1 == null || dict2 == null)
                 return false;
 
-            // remove face data
-            if (dict1.ContainsKey("FaceImageBase64"))
-                dict1.Remove("FaceImageBase64");
-            if (dict2.ContainsKey("FaceImageBase64"))
-                dict2.Remove("FaceImageBase64");
+            // remove biometric data
+            List<string> keysToRemove = new List<string>() { "FaceImageBase64", "FingerTemplates", "FaceTemplateLink", "FaceImageLink" };
+            List<Dictionary<string, object>> dicts = new List<Dictionary<string, object>>() { dict1, dict2 };
+            foreach (string key in keysToRemove)
+                foreach (Dictionary<string, object> dict in dicts)
+                    if (dict.ContainsKey(key))
+                        dict.Remove(key);
 
             // check length
             if (dict1.Count != dict1.Count)

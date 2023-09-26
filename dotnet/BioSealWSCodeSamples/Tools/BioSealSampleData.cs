@@ -9,6 +9,9 @@ namespace BioSealWSCodeSamples
     {
         [DataMember(Order = 1, Name = "payload")]
         public BioSealSamplePayload Payload;
+
+        [DataMember(Order = 2, Name = "images", IsRequired = false, EmitDefaultValue = false)]
+        public BioSealImages Images;
     }
 
     [DataContract]
@@ -80,10 +83,13 @@ namespace BioSealWSCodeSamples
         [DataMember(Order = 201, Name = "misc")]
         public string Misc;
 
-        // Face image in base64
+        // Face links
 
-        [DataMember(Order = 1000, Name = "face_image", IsRequired = false, EmitDefaultValue = false)]
-        public string FaceImageBase64;
+        [DataMember(Order = 1000, Name = "face_template", IsRequired = false, EmitDefaultValue = false)]
+        public string FaceTemplateLink;
+
+        [DataMember(Order = 1001, Name = "face_image", IsRequired = false, EmitDefaultValue = false)]
+        public string FaceImageLink;
 
         public void FromDictionary(Dictionary<string, object> dict)
         {
@@ -126,11 +132,20 @@ namespace BioSealWSCodeSamples
                 this.Misc = dict["misc"] as string;
         }
 
-        public string Serialize(string faceBase64String)
+        public string Serialize(string faceBase64String, bool storeTemplate, bool storePicture)
         {
             BioSealSampleData data = new BioSealSampleData();
+
             data.Payload = this;
-            data.Payload.FaceImageBase64 = faceBase64String;
+
+            if (faceBase64String != null)
+            {
+                data.Payload.FaceTemplateLink = storeTemplate ? "faceImage" : null;
+                data.Payload.FaceImageLink = storePicture ? "faceImage" : null;
+                data.Images = new BioSealImages();
+                data.Images.FaceImageBase64 = faceBase64String;
+            }
+
             return JSONTools.Serialize(data);
         }
 
@@ -155,7 +170,8 @@ namespace BioSealWSCodeSamples
 
             this.Misc = String.Empty;
 
-            this.FaceImageBase64 = String.Empty;
+            this.FaceImageLink = String.Empty;
+            this.FaceTemplateLink = String.Empty;
         }
 
         public void SetBiographics()
